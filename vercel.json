@@ -1,8 +1,0 @@
-{
-  "buildCommand": "cd agentic-beta1 && npm install && npm run build",
-  "outputDirectory": "agentic-beta1/dist",
-  "framework": "vite",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}
