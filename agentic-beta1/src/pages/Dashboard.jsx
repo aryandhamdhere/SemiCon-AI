@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import KnowledgeGraphPanel from '../components/KnowledgeGraphPanel';
 import ExceptionRow from '../components/ExceptionRow';
+import { DEMO_EXCEPTIONS, DEMO_AGENT_LOGS } from '../data/demoData';
 
 /**
  * AgentActivityLog — Real-time feed of AI agent "thoughts"
@@ -17,7 +18,7 @@ const AgentActivityLog = () => {
         setLogs(data.reverse());
       } catch (e) {
         if (logs.length === 0) {
-          setLogs([{ agent: 'System', message: 'Waiting for Agent activity...', timestamp: '' }]);
+          setLogs(DEMO_AGENT_LOGS);
         }
       }
     };
@@ -132,7 +133,7 @@ export default function App() {
         const data = await response.json();
         setExceptions(data);
       } catch (e) {
-        setExceptions([]);
+        setExceptions(DEMO_EXCEPTIONS);
       } finally {
         setLoading(false);
       }
