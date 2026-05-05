@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+apscheduler
+openai
+anthropic
+httpx
+python-dotenv
+sendgrid
+pydantic>=2.0
