@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm install --prefix agentic-beta1 && npm run build --prefix agentic-beta1",
+  "outputDirectory": "agentic-beta1/dist",
+  "installCommand": "echo skip",
+  "framework": null,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
