@@ -91,7 +91,7 @@ def generate_random_exception():
 def start_simulation():
     # Fire an exception immediately for the demo
     scheduler.add_job(generate_random_exception)
-    # Then schedule one every 60 seconds
-    scheduler.add_job(generate_random_exception, 'interval', seconds=60)
+    # Then schedule one every 8 hours (to save API quota)
+    scheduler.add_job(generate_random_exception, 'interval', hours=8)
     scheduler.start()
-    print("⏱️ Simulation Engine started! (1 exception every 60 seconds for live demo)")
+    print("⏱️ Simulation Engine started! (1 exception every 8 hours to conserve Gemini quota)")
