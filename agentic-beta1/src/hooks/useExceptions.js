@@ -9,7 +9,7 @@ export const useExceptions = () => {
         const fetchExceptions = async () => {
             try {
                 // Call your Python backend!
-                const response = await axios.get('http://localhost:8000/exceptions');
+                const response = await axios.get('https://semicon-ai.onrender.com/exceptions');
                 
                 // Reverse the array so the newest exceptions show up at the top
                 setExceptions(response.data.reverse());

@@ -15,7 +15,7 @@ export default function ExceptionRow({ exception }) {
   const handleApprove = async (e) => {
     e.stopPropagation();
     try {
-      await axios.put(`http://localhost:8000/exceptions/${exception.id}/approve`);
+      await axios.put(`https://semicon-ai.onrender.com/exceptions/${exception.id}/approve`);
       setIsHidden(true); // Instantly hide the row
     } catch (error) {
       console.error("Error approving exception:", error);
@@ -25,7 +25,7 @@ export default function ExceptionRow({ exception }) {
   const handleEscalate = async (e) => {
     e.stopPropagation();
     try {
-      await axios.put(`http://localhost:8000/exceptions/${exception.id}/escalate`);
+      await axios.put(`https://semicon-ai.onrender.com/exceptions/${exception.id}/escalate`);
       setLocalStatus('escalated'); // Instantly show the escalated badge
     } catch (error) {
       console.error("Error escalating exception:", error);
@@ -35,7 +35,7 @@ export default function ExceptionRow({ exception }) {
   const handleDismiss = async (e) => {
     e.stopPropagation();
     try {
-      await axios.put(`http://localhost:8000/exceptions/${exception.id}/dismiss`);
+      await axios.put(`https://semicon-ai.onrender.com/exceptions/${exception.id}/dismiss`);
       setIsHidden(true); // Instantly hide the row
     } catch (error) {
       console.error("Error dismissing exception:", error);

@@ -48,7 +48,7 @@ export default function SupplyMap() {
   useEffect(() => {
     const fetchExceptions = async () => {
       try {
-        const res = await fetch('http://localhost:8000/exceptions');
+        const res = await fetch('https://semicon-ai.onrender.com/exceptions');
         const data = await res.json();
         setExceptions(data);
       } catch (e) { /* silent */ }

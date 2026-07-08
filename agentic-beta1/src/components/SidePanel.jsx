@@ -6,7 +6,7 @@ export default function SidePanel() {
   useEffect(() => {
     const pollLogs = async () => {
       try {
-        const response = await fetch('http://localhost:8000/agents/logs');
+        const response = await fetch('https://semicon-ai.onrender.com/agents/logs');
         const data = await response.json();
         setLogs(data.reverse());
       } catch (e) {

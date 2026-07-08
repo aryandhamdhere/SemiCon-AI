@@ -16,7 +16,7 @@ export default function KnowledgeGraphPanel() {
   useEffect(() => {
     const fetchGraph = async () => {
       try {
-        const response = await fetch('http://localhost:8000/graph/visualize');
+        const response = await fetch('https://semicon-ai.onrender.com/graph/visualize');
         const data = await response.json();
         
         if (!response.ok || data.error || !data.nodes || data.nodes.length === 0) {

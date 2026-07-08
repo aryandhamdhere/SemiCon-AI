@@ -49,7 +49,7 @@ export default function ExceptionDetail() {
 
   const fetchDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/exceptions/${id}/details`);
+      const response = await fetch(`https://semicon-ai.onrender.com/exceptions/${id}/details`);
       if (!response.ok) throw new Error('Not found');
       const result = await response.json();
       setData(result);
@@ -85,7 +85,7 @@ export default function ExceptionDetail() {
 
   const handleAction = async (actionType) => {
     try {
-      await axios.put(`http://localhost:8000/exceptions/${id}/${actionType}`);
+      await axios.put(`https://semicon-ai.onrender.com/exceptions/${id}/${actionType}`);
       setActionStatus(actionType);
       if (actionType !== 'escalate') {
         setTimeout(() => navigate('/'), 1500);
