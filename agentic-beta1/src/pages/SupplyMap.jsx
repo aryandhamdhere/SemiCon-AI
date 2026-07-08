@@ -34,10 +34,10 @@ const SUPPLY_ROUTES = [
 ];
 
 const typeColors = {
-  Supplier: { dot: 'bg-blue-500', border: 'border-blue-500', text: 'text-blue-400', glow: 'rgba(59,130,246,0.5)' },
-  Fab: { dot: 'bg-cyan-400', border: 'border-cyan-400', text: 'text-cyan-400', glow: 'rgba(6,182,212,0.6)' },
-  Machine: { dot: 'bg-amber-500', border: 'border-amber-500', text: 'text-amber-400', glow: 'rgba(245,158,11,0.5)' },
-  Distribution: { dot: 'bg-green-500', border: 'border-green-500', text: 'text-green-400', glow: 'rgba(34,197,94,0.5)' },
+  Supplier: { dot: 'bg-blue-600', border: 'border-blue-600', text: 'text-blue-600', glow: 'transparent' },
+  Fab: { dot: 'bg-indigo-600', border: 'border-indigo-600', text: 'text-indigo-600', glow: 'transparent' },
+  Machine: { dot: 'bg-amber-600', border: 'border-amber-600', text: 'text-amber-600', glow: 'transparent' },
+  Distribution: { dot: 'bg-emerald-600', border: 'border-emerald-600', text: 'text-emerald-600', glow: 'transparent' },
 };
 
 export default function SupplyMap() {
@@ -72,8 +72,8 @@ export default function SupplyMap() {
     <div className="animate-fade-in">
       <div className="flex flex-wrap justify-between items-end mb-6 gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100 tracking-tight">🌍 Global Supply Network</h2>
-          <p className="text-sm text-slate-400 mt-1">Real-time view of our semiconductor supply chain across the world</p>
+          <h2 className="text-2xl font-bold text-slate-900 tracking-tight">🌍 Global Supply Network</h2>
+          <p className="text-sm text-slate-600 mt-1">Real-time view of our semiconductor supply chain across the world</p>
         </div>
         <div className="flex gap-2 items-center">
           <span className="text-xs text-slate-500 font-medium">FILTER:</span>
@@ -81,8 +81,8 @@ export default function SupplyMap() {
             <button key={f} onClick={() => setSelectedFilter(f)}
               className={`text-xs px-3 py-1 rounded-full border font-semibold transition-all ${
                 selectedFilter === f
-                  ? 'bg-cyan-500/20 border-cyan-500/50 text-cyan-300'
-                  : 'bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-500'
+                  ? 'bg-blue-50 border-blue-200 text-blue-700'
+                  : 'bg-white border-slate-300 text-slate-600 hover:border-slate-400'
               }`}
             >{f === 'all' ? 'All Nodes' : f}</button>
           ))}
@@ -90,13 +90,13 @@ export default function SupplyMap() {
       </div>
 
       {/* Map Container */}
-      <div className="relative bg-[#0a0e1a] border border-slate-700/50 rounded-xl overflow-hidden" style={{ minHeight: '520px' }}>
+      <div className="relative bg-white border border-slate-200 shadow-sm rounded-xl overflow-hidden" style={{ minHeight: '520px' }}>
         {/* World Map Background */}
-        <div className="absolute inset-0 pointer-events-none opacity-15"
+        <div className="absolute inset-0 pointer-events-none opacity-40"
           style={{
             backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg")',
             backgroundSize: '95%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
-            filter: 'invert(1) sepia(1) saturate(5) hue-rotate(175deg)'
+            filter: 'invert(0) opacity(0.2)'
           }}
         />
 
@@ -110,7 +110,7 @@ export default function SupplyMap() {
             return (
               <line key={i}
                 x1={from.x} y1={from.y} x2={to.x} y2={to.y}
-                stroke={isAffected ? '#ef4444' : '#06b6d4'}
+                stroke={isAffected ? '#dc2626' : '#94a3b8'}
                 strokeWidth="0.3"
                 strokeDasharray={isAffected ? '1,0.5' : '0.8,0.4'}
                 opacity={isAffected ? 0.8 : 0.3}
@@ -138,35 +138,35 @@ export default function SupplyMap() {
               )}
 
               {/* Node Dot */}
-              <div className={`relative w-4 h-4 rounded-full border-2 border-slate-900 ${isAffected ? 'bg-red-500' : colors.dot}`}
-                style={{ boxShadow: `0 0 12px ${isAffected ? 'rgba(239,68,68,0.7)' : colors.glow}` }}
+              <div className={`relative w-4 h-4 rounded-full border-2 border-white ${isAffected ? 'bg-red-500' : colors.dot}`}
+                style={{ boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
               />
 
               {/* Label */}
               <div className="mt-1 text-center whitespace-nowrap">
-                <span className={`font-mono text-[9px] ${isAffected ? 'text-red-400 font-bold' : 'text-slate-500'} bg-slate-900/80 px-1 rounded`}>
+                <span className={`font-mono text-[9px] ${isAffected ? 'text-red-600 font-bold' : 'text-slate-600'} bg-white/90 px-1 rounded border border-slate-200/50`}>
                   {node.city}
                 </span>
               </div>
 
               {/* Tooltip */}
               {hoveredNode === node.id && (
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-56 bg-slate-800 border border-slate-600 rounded-xl p-4 shadow-2xl z-50">
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-56 bg-white border border-slate-200 rounded-xl p-4 shadow-xl z-50">
                   <div className="flex items-center gap-2 mb-2">
                     <div className={`w-2.5 h-2.5 rounded-full ${isAffected ? 'bg-red-500' : colors.dot}`} />
-                    <span className="font-bold text-slate-100 text-sm">{node.name}</span>
+                    <span className="font-bold text-slate-900 text-sm">{node.name}</span>
                   </div>
-                  <p className={`text-[10px] uppercase tracking-wider font-bold mb-2 ${isAffected ? 'text-red-400' : colors.text}`}>
+                  <p className={`text-[10px] uppercase tracking-wider font-bold mb-2 ${isAffected ? 'text-red-600' : colors.text}`}>
                     {isAffected ? '⚠️ ACTIVE EXCEPTION' : node.type}
                   </p>
-                  <p className="text-xs text-slate-400 leading-snug mb-2">{node.detail}</p>
-                  <div className="text-xs text-slate-500 flex justify-between border-t border-slate-700 pt-2 mt-2">
-                    <span>Risk: <strong className={isAffected ? 'text-red-400' : 'text-slate-300'}>{(node.risk * 100).toFixed(0)}%</strong></span>
+                  <p className="text-xs text-slate-600 leading-snug mb-2">{node.detail}</p>
+                  <div className="text-xs text-slate-500 flex justify-between border-t border-slate-200 pt-2 mt-2">
+                    <span>Risk: <strong className={isAffected ? 'text-red-600' : 'text-slate-800'}>{(node.risk * 100).toFixed(0)}%</strong></span>
                     <span>{node.country}</span>
                   </div>
                   {/* Show which exceptions affect this node */}
                   {isAffected && exceptions.filter(e => e.node === node.id).map(ex => (
-                    <div key={ex.id} className="mt-2 bg-red-500/10 border border-red-500/30 rounded p-2 text-xs text-red-300">
+                    <div key={ex.id} className="mt-2 bg-red-50 border border-red-200 rounded p-2 text-xs text-red-700">
                       EX-{ex.id}: {ex.title}
                     </div>
                   ))}
@@ -178,16 +178,16 @@ export default function SupplyMap() {
       </div>
 
       {/* Legend */}
-      <div className="mt-4 flex flex-wrap justify-center gap-6 bg-slate-800/20 border border-slate-700/50 rounded-xl p-3">
+      <div className="mt-4 flex flex-wrap justify-center gap-6 bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
         {Object.entries(typeColors).map(([type, colors]) => (
           <div key={type} className="flex items-center gap-2">
-            <div className={`w-3 h-3 rounded-full ${colors.dot}`} style={{ boxShadow: `0 0 6px ${colors.glow}` }} />
-            <span className="text-xs font-semibold text-slate-300 uppercase">{type}</span>
+            <div className={`w-3 h-3 rounded-full ${colors.dot}`} />
+            <span className="text-xs font-semibold text-slate-600 uppercase">{type}</span>
           </div>
         ))}
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" style={{ boxShadow: '0 0 6px rgba(239,68,68,0.7)' }} />
-          <span className="text-xs font-semibold text-red-400 uppercase">Active Exception</span>
+          <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
+          <span className="text-xs font-semibold text-red-600 uppercase">Active Exception</span>
         </div>
       </div>
     </div>

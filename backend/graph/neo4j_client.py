@@ -3,9 +3,9 @@ from neo4j import GraphDatabase
 
 # In a real app, these should go in a .env file
 # For now, replace these with the details from your credentials.txt
-NEO4J_URI = "neo4j+s://4327b0bb.databases.neo4j.io"
-NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "B0v4DQVZYc5RZDrDLbJO44s1I1_2A47raYoZGB1C3YE"
+NEO4J_URI = "neo4j+s://579a833d.databases.neo4j.io"
+NEO4J_USER = "579a833d"
+NEO4J_PASSWORD = "aV5YYS0s1HE7gLhHnx9XJGRui9L1R6sdQVQfWabQ9mA"
 
 class Neo4jClient:
     def __init__(self):

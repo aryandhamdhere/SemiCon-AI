@@ -10,7 +10,7 @@ import ExecutiveView from './pages/ExecutiveView'
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
       <Navbar />
       <div className="flex">
         <main className="flex-1 p-6 max-w-[1600px]">

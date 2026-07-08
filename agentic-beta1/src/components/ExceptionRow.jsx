@@ -51,12 +51,12 @@ export default function ExceptionRow({ exception }) {
   return (
     <div 
       onClick={() => navigate(`/exception/${exception.id}`)}
-      className="flex flex-col xl:flex-row xl:items-center justify-between p-4 border-b border-slate-700/50 hover:bg-slate-800/40 transition-colors gap-4 cursor-pointer"
+      className="flex flex-col xl:flex-row xl:items-center justify-between p-4 border-b border-slate-200 hover:bg-slate-50 transition-colors gap-4 cursor-pointer"
     >
       <div className="flex-1">
         <div className="flex items-center gap-3 mb-1.5">
-          <span className="font-mono text-xs text-cyan-500 bg-cyan-500/10 px-1.5 py-0.5 rounded">EX-{exception.id}</span>
-          <span className="text-xs text-slate-400 font-medium">{timeString}</span>
+          <span className="font-mono text-xs text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded">EX-{exception.id}</span>
+          <span className="text-xs text-slate-500 font-medium">{timeString}</span>
           <StatusBadge status={exception.severity} />
           {localStatus === 'escalated' && (
             <span className="px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider rounded border bg-purple-500/10 text-purple-400 border-purple-500/30">
@@ -64,8 +64,8 @@ export default function ExceptionRow({ exception }) {
             </span>
           )}
         </div>
-        <div className="font-semibold text-slate-200 text-base">{exception.title}</div>
-        <div className="text-sm text-slate-400 mt-1 flex items-center gap-1.5">
+        <div className="font-semibold text-slate-800 text-base">{exception.title}</div>
+        <div className="text-sm text-slate-600 mt-1 flex items-center gap-1.5">
           {/* ... icon SVG ... */}
           {exception.node}
         </div>
@@ -95,7 +95,7 @@ export default function ExceptionRow({ exception }) {
             </button>
           </>
         ) : (
-          <span className="text-xs text-slate-500 italic bg-slate-800/50 px-3 py-1.5 rounded border border-slate-700">Read-Only</span>
+          <span className="text-xs text-slate-500 italic bg-slate-50 px-3 py-1.5 rounded border border-slate-200">Read-Only</span>
         )}
       </div>
     </div>

@@ -71,6 +71,8 @@ def add_agent_log(log: Dict):
     Endpoint for LangGraph nodes to report progress.
     Expected format: {"agent": "Supply Agent", "message": "Analyzing inventory..."}
     """
+    import datetime
+    log["time"] = datetime.datetime.now().strftime("%H:%M:%S")
     agent_logs.append(log)
     # Keep the list from growing infinitely in memory
     if len(agent_logs) > 100:

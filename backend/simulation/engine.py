@@ -89,6 +89,9 @@ def generate_random_exception():
         print(f"✅ AI ACTION SAVED: {agent_action.agent_name} recommended -> {agent_action.recommendation}")
 
 def start_simulation():
-    scheduler.add_job(generate_random_exception, 'interval', seconds=7200)
+    # Fire an exception immediately for the demo
+    scheduler.add_job(generate_random_exception)
+    # Then schedule one every 60 seconds
+    scheduler.add_job(generate_random_exception, 'interval', seconds=60)
     scheduler.start()
-    print("⏱️ Simulation Engine started! (1 exception every 2 hours to conserve Gemini quota)")
+    print("⏱️ Simulation Engine started! (1 exception every 60 seconds for live demo)")
